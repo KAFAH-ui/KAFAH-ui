@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="KAFAH - Konseling & Bimbingan Bahasa Inggris. Program personal, fleksibel, dan terarah untuk speaking, writing, grammar, IELTS/TOEFL, serta confidence building." />
+  <title>KAFAH | Konseling & Bimbingan Bahasa Inggris</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.08);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.7);
+      --muted2: rgba(255,255,255,.58);
+      --accent: #7c3aed;   /* violet */
+      --accent2:#22d3ee;   /* cyan */
+      --good:#34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1160px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 15% 10%, rgba(124,58,237,.35), transparent 55%),
+        radial-gradient(900px 600px at 85% 20%, rgba(34,211,238,.25), transparent 55%),
+        radial-gradient(900px 600px at 65% 95%, rgba(52,211,153,.18), transparent 55%),
+        linear-gradient(180deg, #070a14 0%, #0b1020 45%, #070a14 100%);
+      overflow-x:hidden;
+    }
+
+    /* Smooth scroll */
+    html{ scroll-behavior:smooth; }
+
+    /* Container */
+    .container{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+    /* Header / Nav */
+    .header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,20,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text);
+    }
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(255,255,255,.65), transparent 60%),
+        linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 14px 30px rgba(124,58,237,.25), 0 12px 30px rgba(34,211,238,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: rotate(20deg);
+      animation: shine 3.6s ease-in-out infinite;
+    }
+    @keyframes shine{
+      0%, 70%{ transform: translateX(-40%) rotate(20deg); opacity:.0; }
+      80%{ opacity:.9; }
+      100%{ transform: translateX(40%) rotate(20deg); opacity:0; }
+    }
+    .brand strong{ font-weight:800; letter-spacing:.3px; }
+    .brand span{ display:block; font-size:12px; color:var(--muted2); margin-top:2px; }
+
+    .menu{
+      display:flex; gap:18px; align-items:center;
+    }
+    .menu a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      padding:10px 12px;
+      border-radius:12px;
+      transition:.18s ease;
+    }
+    .menu a:hover{ color:var(--text); background: rgba(255,255,255,.06); }
+
+    .nav-actions{ display:flex; gap:10px; align-items:center; }
+    .btn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      transition:.18s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.22);
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); }
+    .btn.primary{
+      border-color: rgba(124,58,237,.4);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+      box-shadow: 0 18px 40px rgba(124,58,237,.22), 0 16px 40px rgba(34,211,238,.14);
+    }
+    .btn.primary:hover{ filter: brightness(1.05); }
+    .btn .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: rgba(255,255,255,.9);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.15);
+    }
+
+    /* Mobile menu */
+    .burger{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .burger:hover{ background: rgba(255,255,255,.09); }
+    .burger svg{ width:22px; height:22px; }
+    .mobile-panel{
+      display:none;
+      padding: 0 0 16px 0;
+    }
+    .mobile-panel .menu{
+      flex-direction:column; align-items:stretch; gap:8px;
+      padding: 10px 0 0 0;
+    }
+    .mobile-panel .menu a{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .mobile-panel .nav-actions{
+      justify-content:stretch; margin-top:10px;
+    }
+    .mobile-panel .nav-actions .btn{ justify-content:center; width:100%; }
+
+    /* Hero */
+    .hero{
+      padding: 64px 0 30px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+      width: fit-content;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .badge b{ color: var(--text); }
+    .spark{
+      width:14px; height:14px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 0 6px rgba(34,211,238,.18);
+    }
+    h1{
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.05;
+      margin: 16px 0 12px;
+      letter-spacing: -0.6px;
+    }
+    .grad{
+      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(34,211,238,.92), rgba(124,58,237,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+    .lead{
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0 0 22px;
+      max-width: 56ch;
+    }
+    .hero-actions{
+      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+      margin: 18px 0 18px;
+    }
+    .meta-row{
+      display:flex; gap:14px; flex-wrap:wrap;
+      margin-top: 18px;
+    }
+    .meta{
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      min-width: 170px;
+    }
+    .meta .k{ color: var(--muted2); font-size: 12px; font-weight: 700; }
+    .meta .v{ margin-top: 6px; font-weight: 800; }
+    .meta .v small{ font-weight: 700; color: var(--muted); }
+
+    .hero-card{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 220px at 40% 0%, rgba(34,211,238,.20), transparent 60%),
+        radial-gradient(600px 220px at 70% 40%, rgba(124,58,237,.20), transparent 60%);
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-card > *{ position:relative; z-index:1; }
+
+    .mini-grid{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    .mini{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .mini h3{ margin:0 0 6px; font-size:14px; }
+    .mini p{ margin:0; color:var(--muted); font-size:13px; line-height:1.55; }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      width:fit-content;
+    }
+    .pill .ic{
+      width:18px; height:18px; border-radius:8px;
+      background: rgba(255,255,255,.08);
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .quote{
+      margin-top:auto;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      line-height:1.6;
+      font-size: 13px;
+    }
+    .quote b{ color: var(--text); }
+
+    /* Sections */
+    section{ padding: 54px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:18px;
+      margin-bottom: 18px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: clamp(24px, 2.3vw, 34px);
+      letter-spacing:-.35px;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{
+      border-color: rgba(255,255,255,.16);
+      transform: translateY(-2px);
+      transition: .18s ease;
+    }
+    .icon{
+      width:42px; height:42px; border-radius:16px;
+      background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,211,238,.85));
+      display:grid; place-items:center;
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 40px rgba(124,58,237,.18), 0 14px 40px rgba(34,211,238,.12);
+      margin-bottom: 12px;
+    }
+    .card h3{ margin:0 0 8px; font-size:16px; }
+    .card p{ margin:0; color: var(--muted); font-size:14px; line-height:1.65; }
+
+    /* Programs */
+    .pricing{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr .9fr;
+      gap: 14px;
+    }
+    .plan{
+      padding: 20px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .plan.featured{
+      border-color: rgba(34,211,238,.28);
+      background:
+        radial-gradient(700px 260px at 40% 0%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(700px 260px at 70% 30%, rgba(124,58,237,.18), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+    .plan .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; font-weight:800;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+    }
+    .plan .tag .star{
+      width:10px; height:10px; border-radius:99px;
+      background: var(--warn);
+      box-shadow: 0 0 0 6px rgba(251,191,36,.15);
+    }
+    .plan h3{ margin: 12px 0 6px; font-size: 18px; }
+    .price{
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: -0.6px;
+      margin: 10px 0 14px;
+    }
+    .price small{ font-size: 13px; color: var(--muted); font-weight: 700; }
+    .ul{
+      list-style:none; padding:0; margin: 0 0 16px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .ul li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 14px;
+    }
+    .check{
+      width:18px; height:18px; border-radius:7px;
+      background: rgba(52,211,153,.16);
+      border:1px solid rgba(52,211,153,.35);
+      display:grid; place-items:center;
+      flex: 0 0 18px;
+      margin-top: 2px;
+    }
+
+    /* Testimonials */
+    .testis{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+    .tcard{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      box-shadow: 0 14px 40px rgba(0,0,0,.24);
+    }
+    .tcard .row{ display:flex; gap:12px; align-items:center; }
+    .avatar{
+      width:44px; height:44px; border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+      font-weight: 900;
+      letter-spacing:.3px;
+      color: rgba(255,255,255,.85);
+    }
+    .who b{ display:block; }
+    .who span{ color: var(--muted2); font-size: 13px; }
+    .stars{ margin-left:auto; color: rgba(251,191,36,.95); font-size: 14px; }
+    .tcard p{ margin: 12px 0 0; color: var(--muted); line-height:1.65; font-size: 14px; }
+
+    /* FAQ */
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    details{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding: 14px 16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 800;
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    .chev{
+      width:34px; height:34px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display:grid; place-items:center;
+      transition: .18s ease;
+      flex: 0 0 34px;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+    details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+    .panel{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    form{
+      display:grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    label{
+      font-weight: 800;
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      margin-top: 8px;
+    }
+    input, select, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(10,14,28,.6);
+      color: var(--text);
+      outline:none;
+      font-family: inherit;
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+    }
+    input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.42); }
+    textarea{ min-height: 110px; resize: vertical; }
+    .form-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .note{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .success{
+      display:none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(52,211,153,.35);
+      background: rgba(52,211,153,.12);
+      color: rgba(255,255,255,.9);
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 36px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(7,10,20,.45);
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      color: var(--muted2);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .foot a{ color: rgba(255,255,255,.75); text-decoration:none; }
+    .foot a:hover{ color: var(--text); }
+
+    /* Floating WhatsApp */
+    .float{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .fab{
+      width: 52px; height: 52px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 46px rgba(0,0,0,.35);
+      display:grid; place-items:center;
+      cursor:pointer;
+      transition: .18s ease;
+      text-decoration:none;
+      color: var(--text);
+    }
+    .fab:hover{ transform: translateY(-2px); background: rgba(255,255,255,.10); }
+    .fab .wa{
+      width:22px; height:22px;
+    }
+    .tooltip{
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 10px 12px;
+      color: rgba(255,255,255,.85);
+      font-size: 12px;
+      max-width: 220px;
+      display:none;
+    }
+    .float:hover .tooltip{ display:block; }
+
+    /* Reveal animations */
+    .reveal{ opacity:0; transform: translateY(10px); transition: .6s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .pricing{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .testis{ grid-template-columns: 1fr; }
+      .faq{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .menu{ display:none; }
+      .nav-actions{ display:none; }
+      .burger{ display:inline-grid; place-items:center; }
+      .mobile-panel{ display:block; }
+      .form-row{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="#home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <strong>KAFAH</strong>
+            <span>Konseling & Bimbingan Bahasa Inggris</span>
+          </div>
+        </a>
+
+        <div class="menu" role="navigation">
+          <a href="#layanan">Layanan</a>
+          <a href="#program">Program</a>
+          <a href="#testimoni">Testimoni</a>
+          <a href="#faq">FAQ</a>
+          <a href="#daftar">Daftar</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn" href="#daftar" aria-label="Lihat form pendaftaran">
+            <span class="dot" aria-hidden="true"></span> Konsultasi
+          </a>
+          <a class="btn primary" id="btnHeroWA" href="#"
+             aria-label="Chat WhatsApp KAFAH">
+            Mulai via WhatsApp
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14 3h7v7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M21 3l-9 9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 6H7a4 4 0 0 0-4 4v7a4 4 0 0 0 4 4h7a4 4 0 0 0 4-4v-5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 7h14M5 12h14M5 17h14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Panel -->
+      <div class="mobile-panel" id="mobilePanel" hidden>
+        <div class="menu">
+          <a href="#layanan">Layanan</a>
+          <a href="#program">Program</a>
+          <a href="#testimoni">Testimoni</a>
+          <a href="#faq">FAQ</a>
+          <a href="#daftar">Daftar</a>
+        </div>
+        <div class="nav-actions">
+          <a class="btn" href="#daftar">
+            <span class="dot" aria-hidden="true"></span> Konsultasi
+          </a>
+          <a class="btn primary" id="btnHeroWA2" href="#">Mulai via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="badge reveal">
+            <span class="spark" aria-hidden="true"></span>
+            <span><b>Personal English Coaching</b> • Konseling + bimbingan terarah</span>
+          </div>
+
+          <h1 class="reveal" style="transition-delay:.05s">
+            Naik level Bahasa Inggris dengan <span class="grad">pendampingan yang jelas</span> — bukan sekadar kelas.
+          </h1>
+
+          <p class="lead reveal" style="transition-delay:.1s">
+            KAFAH membantu kamu mengatasi <b>stuck</b> speaking, grammar yang berantakan, kurang percaya diri,
+            atau butuh roadmap untuk IELTS/TOEFL. Ada sesi konseling, rencana belajar personal, dan latihan yang relevan.
+          </p>
+
+          <div class="hero-actions reveal" style="transition-delay:.14s">
+            <a class="btn primary" href="#daftar">
+              Mulai Konsultasi
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a class="btn" href="#program">
+              Lihat Program
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 10l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta reveal" style="transition-delay:.18s">
+              <div class="k">Fokus Utama</div>
+              <div class="v">Speaking & Confidence <small>+ feedback cepat</small></div>
+            </div>
+            <div class="meta reveal" style="transition-delay:.22s">
+              <div class="k">Format</div>
+              <div class="v">Online • 1:1 / Small Group</div>
+            </div>
+            <div class="meta reveal" style="transition-delay:.26s">
+              <div class="k">Metode</div>
+              <div class="v">Roadmap + Practice + Review</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal" style="transition-delay:.18s" aria-label="Highlight KAFAH">
+          <div class="pill">
+            <span class="ic" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l2.6 5.6L21 10l-4.8 4.6L17.4 21 12 18l-5.4 3 1.2-6.4L3 10l6.4-1.4L12 3z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            Sesi pertama: <b style="color:var(--text)">Assessment & Goal Mapping</b>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <h3>Diagnosis cepat</h3>
+              <p>Temukan akar masalah: vocab, grammar, atau mindset speaking.</p>
+            </div>
+            <div class="mini">
+              <h3>Latihan real-life</h3>
+              <p>Role-play interview, presentation, daily conversation, writing task.</p>
+            </div>
+            <div class="mini">
+              <h3>Feedback jelas</h3>
+              <p>Catatan koreksi + contoh kalimat yang natural dan tepat.</p>
+            </div>
+            <div class="mini">
+              <h3>Progress terukur</h3>
+              <p>Tracking mingguan: target, latihan, dan evaluasi.</p>
+            </div>
+          </div>
+
+          <div class="quote">
+            “Bukan hanya belajar, tapi <b>dibimbing</b> sampai kamu tahu apa yang harus dilakukan setiap minggu.”
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Layanan -->
+  <section id="layanan">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="reveal">Layanan KAFAH</h2>
+          <p class="reveal" style="transition-delay:.06s">
+            Pilih yang sesuai kebutuhanmu — bisa mulai dari konseling 1x sampai program intensif.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 5h16v10H7l-3 3V5z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8 9h8M8 12h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Konseling Bahasa Inggris</h3>
+          <p>Curhat akademik/karier, hambatan speaking, dan strategi belajar sesuai gaya kamu.</p>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.05s">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 19V5a2 2 0 0 1 2-2h10l4 4v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M16 3v4h4" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <path d="M8 11h8M8 15h6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Writing & Grammar Clinic</h3>
+          <p>Perbaiki struktur kalimat, coherence, dan gaya bahasa (email, essay, SOP, dsb.).</p>
+        </div>
+
+        <div class="card reveal" style="transition-delay:.1s">
+          <div class="icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>IELTS/TOEFL Mentoring</h3>
+          <p>Roadmap target skor, latihan terfokus, dan simulasi yang realistis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program / Pricing -->
+  <section id="program">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="reveal">Program yang fleksibel</h2>
+          <p class="reveal" style="transition-delay:.06s">
+            Semua program bisa disesuaikan: topik, jadwal, dan target. Harga bisa kamu ganti nanti sesuai kebutuhan.
+          </p>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="plan reveal">
+          <span class="tag"><span class="star" aria-hidden="true"></span> Starter</span>
+          <h3>Konsultasi 1x</h3>
+          <div class="price">Rp149k <small>/ sesi</small></div>
+          <ul class="ul">
+            <li><span class="check" aria-hidden="true">✓</span> Assessment level & goal mapping</li>
+            <li><span class="check" aria-hidden="true">✓</span> Diagnosa hambatan utama</li>
+            <li><span class="check" aria-hidden="true">✓</span> Rencana belajar 7 hari</li>
+          </ul>
+          <a class="btn" href="#daftar">Pilih Starter</a>
+        </div>
+
+        <div class="plan featured reveal" style="transition-delay:.05s">
+          <span class="tag"><span class="star" aria-hidden="true"></span> Paling populer</span>
+          <h3>Coaching 4 Minggu</h3>
+          <div class="price">Rp599k <small>/ bulan</small></div>
+          <ul class="ul">
+            <li><span class="check" aria-hidden="true">✓</span> 4 sesi live (1:1 / small group)</li>
+            <li><span class="check" aria-hidden="true">✓</span> Homework & feedback tertulis</li>
+            <li><span class="check" aria-hidden="true">✓</span> Template phrase + vocab booster</li>
+            <li><span class="check" aria-hidden="true">✓</span> Tracking progress mingguan</li>
+          </ul>
+          <a class="btn primary" href="#daftar">Ambil Program Ini</a>
+        </div>
+
+        <div class="plan reveal" style="transition-delay:.1s">
+          <span class="tag"><span class="star" aria-hidden="true"></span> Intensif</span>
+          <h3>Mentoring 8 Minggu</h3>
+          <div class="price">Rp1.099k <small>/ 2 bulan</small></div>
+          <ul class="ul">
+            <li><span class="check" aria-hidden="true">✓</span> 8 sesi live + simulasi</li>
+            <li><span class="check" aria-hidden="true">✓</span> Focus IELTS/TOEFL / Interview</li>
+            <li><span class="check" aria-hidden="true">✓</span> Review writing (SOP/Essay)</li>
+            <li><span class="check" aria-hidden="true">✓</span> Support chat 5 hari/minggu</li>
+          </ul>
+          <a class="btn" href="#daftar">Pilih Intensif</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimoni">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="reveal">Apa kata mereka</h2>
+          <p class="reveal" style="transition-delay:.06s">
+            Contoh testimoni (silakan ganti dengan yang asli).
+          </p>
+        </div>
+      </div>
+
+      <div class="testis">
+        <div class="tcard reveal">
+          <div class="row">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div class="who">
+              <b>Ardi</b>
+              <span>Job Interview Prep</span>
+            </div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+          <p>“Aku jadi lebih pede ngomong. Koreksinya jelas, dan latihan interviewnya relevan banget.”</p>
+        </div>
+
+        <div class="tcard reveal" style="transition-delay:.05s">
+          <div class="row">
+            <div class="avatar" aria-hidden="true">N</div>
+            <div class="who">
+              <b>Nadia</b>
+              <span>IELTS Focus</span>
+            </div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+          <p>“Roadmap-nya rapi. Aku tahu harus latihan apa tiap minggu. Writing juga jauh membaik.”</p>
+        </div>
+
+        <div class="tcard reveal" style="transition-delay:.1s">
+          <div class="row">
+            <div class="avatar" aria-hidden="true">R</div>
+            <div class="who">
+              <b>Raka</b>
+              <span>Speaking Confidence</span>
+            </div>
+            <div class="stars" aria-hidden="true">★★★★★</div>
+          </div>
+          <p>“Dulu sering blank saat speaking. Sekarang punya bank phrase dan flow yang lebih natural.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="reveal">Pertanyaan yang sering ditanya</h2>
+          <p class="reveal" style="transition-delay:.06s">
+            Klik untuk membuka jawabannya.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>
+            Apakah harus sudah punya level tertentu?
+            <span class="chev" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <p>Tidak. Program bisa untuk beginner sampai advanced. Sesi awal akan memetakan level & fokus perbaikan.</p>
+        </details>
+
+        <details class="reveal" style="transition-delay:.05s">
+          <summary>
+            Online pakai apa?
+            <span class="chev" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <p>Bisa Google Meet / Zoom. Materi & catatan feedback bisa dibagikan lewat Google Docs atau PDF.</p>
+        </details>
+
+        <details class="reveal" style="transition-delay:.1s">
+          <summary>
+            Bisa fokus interview / presentation?
+            <span class="chev" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <p>Bisa. Kita bikin skenario role-play, struktur jawaban, koreksi pronunciation, dan bank vocabulary sesuai bidang.</p>
+        </details>
+
+        <details class="reveal" style="transition-delay:.15s">
+          <summary>
+            Kalau jadwal sibuk?
+            <span class="chev" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M7 10l5 5 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </summary>
+          <p>Jadwal fleksibel. Kamu bisa pilih slot mingguan. Kalau perlu, kita atur pola latihan mandiri yang ringan tapi konsisten.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Register -->
+  <section id="daftar">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="reveal">Daftar & konsultasi</h2>
+          <p class="reveal" style="transition-delay:.06s">
+            Isi form ini untuk memulai. (Demo: data tidak dikirim ke server — bisa kamu sambungkan ke backend nanti.)
+          </p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="panel reveal">
+          <h3 style="margin:0 0 8px;">Form Pendaftaran</h3>
+          <p style="margin:0 0 14px; color:var(--muted); line-height:1.6;">
+            Isi kebutuhanmu, nanti sistem akan membuat draft pesan WhatsApp otomatis.
+          </p>
+
+          <form id="regForm">
+            <div class="form-row">
+              <div>
+                <label for="name">Nama</label>
+                <input id="name" name="name" placeholder="Contoh: Dito" required />
+              </div>
+              <div>
+                <label for="phone">No. WhatsApp</label>
+                <input id="phone" name="phone" placeholder="Contoh: 08xxxxxxxxxx" inputmode="tel" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="goal">Target</label>
+                <select id="goal" name="goal" required>
+                  <option value="" selected disabled>Pilih target</option>
+                  <option>Speaking confidence</option>
+                  <option>Interview / Career</option>
+                  <option>IELTS / TOEFL</option>
+                  <option>Writing (SOP/Essay/Email)</option>
+                  <option>Grammar foundation</option>
+                </select>
+              </div>
+              <div>
+                <label for="plan">Program yang diinginkan</label>
+                <select id="plan" name="plan" required>
+                  <option value="" selected disabled>Pilih program</option>
+                  <option>Konsultasi 1x</option>
+                  <option>Coaching 4 Minggu</option>
+                  <option>Mentoring 8 Minggu</option>
+                </select>
+              </div>
+            </div>
+
+            <label for="msg">Ceritakan kondisi kamu</label>
+            <textarea id="msg" name="msg" placeholder="Contoh: Saya sering blank saat speaking, ingin latihan interview untuk posisi ..."></textarea>
+
+            <button class="btn primary" type="submit">
+              Buat Pesan WhatsApp
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14 3h7v7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M21 3l-9 9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 6H7a4 4 0 0 0-4 4v7a4 4 0 0 0 4 4h7a4 4 0 0 0 4-4v-5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <div class="note">
+              Tips: ganti nomor WhatsApp admin KAFAH di bagian script (variabel <b>ADMIN_WA</b>).
+            </div>
+
+            <div class="success" id="successBox" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="panel reveal" style="transition-delay:.08s">
+          <h3 style="margin:0 0 8px;">Kontak & jam layanan</h3>
+          <p style="margin:0 0 14px; color:var(--muted); line-height:1.6;">
+            Untuk fast response, gunakan WhatsApp. Kamu juga bisa request jadwal & topik spesifik.
+          </p>
+
+          <div class="mini" style="margin-bottom:12px;">
+            <h3>Jam Layanan</h3>
+            <p>Senin–Sabtu • 09.00–21.00 WIB</p>
+          </div>
+
+          <div class="mini" style="margin-bottom:12px;">
+            <h3>Alamat (opsional)</h3>
+            <p>Online-based • Bisa tambah lokasi jika ada kelas offline.</p>
+          </div>
+
+          <div class="mini">
+            <h3>Value utama KAFAH</h3>
+            <p>Belajar yang “nyambung” ke kebutuhan: karier, akademik, dan komunikasi sehari-hari.</p>
+          </div>
+
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn primary" id="btnWAQuick" href="#">Chat WhatsApp</a>
+            <a class="btn" href="#program">Lihat Paket</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <b style="color:rgba(255,255,255,.9)">KAFAH</b><br/>
+          <span>Konseling & Bimbingan Bahasa Inggris</span>
+        </div>
+        <div>
+          <a href="#layanan">Layanan</a> •
+          <a href="#program">Program</a> •
+          <a href="#faq">FAQ</a> •
+          <a href="#daftar">Daftar</a>
+        </div>
+        <div>
+          © <span id="year"></span> KAFAH. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <div class="float" aria-label="Kontak cepat">
+    <div class="tooltip">Butuh respon cepat? Klik untuk chat admin KAFAH.</div>
+    <a class="fab" id="fabWA" href="#" aria-label="Chat WhatsApp KAFAH">
+      <svg class="wa" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 3C9.4 3 4 8.2 4 14.7c0 2.5.8 4.9 2.2 6.9L5 29l7.6-1.9c2 .9 4.2 1.4 6.4 1.4 6.6 0 12-5.2 12-11.8S22.6 3 16 3z" stroke="white" stroke-width="2" opacity=".9"/>
+        <path d="M12.5 10.5c-.3-.7-.6-.7-.9-.7h-.8c-.2 0-.6.1-.9.5-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.8 5.9 5.2 2.9 1.1 3.5.9 4.1.8.6-.1 1.9-.8 2.2-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4l-2.2-1c-.2-.1-.4-.1-.6.2-.2.3-.7 1.1-.9 1.3-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.4.1-.5l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.4-.1-.6l-1-2.5z" fill="white" opacity=".92"/>
+      </svg>
+    </a>
+  </div>
+
+  <script>
+    // ==========================
+    // KAFAH - Single file script
+    // ==========================
+
+    // TODO: Ganti nomor admin WhatsApp di sini (format internasional tanpa +)
+    // Contoh Indonesia: 62812xxxxxxx
+    const ADMIN_WA = "6281234567890";
+
+    const $ = (q, ctx=document) => ctx.querySelector(q);
+
+    // Footer year
+    $("#year").textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const burger = $("#burger");
+    const mobilePanel = $("#mobilePanel");
+
+    burger.addEventListener("click", () => {
+      const isOpen = burger.getAttribute("aria-expanded") === "true";
+      burger.setAttribute("aria-expanded", String(!isOpen));
+      mobilePanel.hidden = isOpen;
+    });
+
+    // Close mobile panel when clicking a link
+    mobilePanel.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if(!a) return;
+      burger.setAttribute("aria-expanded", "false");
+      mobilePanel.hidden = true;
+    });
+
+    // Reveal on scroll (lightweight)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add("in");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Build WhatsApp link
+    function waLink(text){
+      const msg = encodeURIComponent(text);
+      return `https://wa.me/${ADMIN_WA}?text=${msg}`;
+    }
+
+    function defaultWAText(){
+      return `Halo KAFAH 👋%0A` +
+        `Saya ingin konsultasi & bimbingan Bahasa Inggris.%0A%0A` +
+        `Boleh minta info jadwal dan program yang cocok?`;
+    }
+
+    // Bind quick buttons
+    const btnHeroWA = $("#btnHeroWA");
+    const btnHeroWA2 = $("#btnHeroWA2");
+    const btnWAQuick = $("#btnWAQuick");
+    const fabWA = $("#fabWA");
+
+    [btnHeroWA, btnHeroWA2, btnWAQuick, fabWA].forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(waLink(defaultWAText()), "_blank", "noopener");
+      });
+    });
+
+    // Form => generate WA message
+    const form = $("#regForm");
+    const successBox = $("#successBox");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = $("#name").value.trim();
+      const phone = $("#phone").value.trim();
+      const goal = $("#goal").value;
+      const plan = $("#plan").value;
+      const msg = $("#msg").value.trim();
+
+      const lines = [
+        "Halo KAFAH 👋",
+        `Nama: ${name}`,
+        `WhatsApp: ${phone}`,
+        `Target: ${goal}`,
+        `Program: ${plan}`,
+      ];
+
+      if(msg) lines.push(`Kondisi: ${msg}`);
+
+      lines.push("", "Mohon info jadwal terdekat & langkah selanjutnya ya. Terima kasih 🙏");
+
+      const text = lines.join("\n");
+      const url = waLink(text);
+
+      successBox.style.display = "block";
+      successBox.textContent = "Draft pesan siap! Membuka WhatsApp…";
+
+      window.open(url, "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
